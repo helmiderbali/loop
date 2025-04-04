@@ -11,6 +11,7 @@ A modern Android social media application built with Jetpack Compose and followi
 - **Posts**: Support for rich content with comments, likes, bookmarks, and sharing
 - **Notifications**: Real-time updates on interactions with your content
 - **User Profiles**: Personalized profiles with posts, subscriptions, and activity history
+- **Dark Mode**: Dark mode support for a comfortable viewing experience
 
 ## 📸 Screenshots
 
@@ -23,6 +24,7 @@ A modern Android social media application built with Jetpack Compose and followi
   <tr>
     <td><img src="./screenshots/4.gif" width="200"/></td>
     <td><img src="./screenshots/5.gif" width="200"/></td>
+    <td><img src="./screenshots/6.gif" width="200"/></td>
   </tr>
 </table>
 
