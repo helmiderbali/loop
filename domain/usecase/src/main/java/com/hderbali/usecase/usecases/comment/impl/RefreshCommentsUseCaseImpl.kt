@@ -1,7 +1,7 @@
 package com.hderbali.usecase.usecases.comment.impl
 
+import com.hderbali.ui.usescases.comment.RefreshCommentsUseCase
 import com.hderbali.usecase.repository.CommentRepository
-import com.hderbali.usecase.usecases.comment.RefreshCommentsUseCase
 import javax.inject.Inject
 
 class RefreshCommentsUseCaseImpl @Inject constructor(

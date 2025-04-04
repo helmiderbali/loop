@@ -1,9 +1,9 @@
 package com.hderbali.usecase.usecases.user.impl
 
-import com.hderbali.model.ResultOf
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.User
+import com.hderbali.ui.usescases.profile.GetUsersUseCase
 import com.hderbali.usecase.repository.UserRepository
-import com.hderbali.usecase.usecases.user.GetUsersUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

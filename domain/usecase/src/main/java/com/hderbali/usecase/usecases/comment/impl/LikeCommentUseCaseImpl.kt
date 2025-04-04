@@ -1,8 +1,8 @@
 package com.hderbali.usecase.usecases.comment.impl
 
-import com.hderbali.model.ResultOf
+import com.hderbali.common.model.ResultOf
+import com.hderbali.ui.usescases.comment.LikeCommentUseCase
 import com.hderbali.usecase.repository.CommentRepository
-import com.hderbali.usecase.usecases.comment.LikeCommentUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

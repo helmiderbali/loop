@@ -37,6 +37,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
+    }
 }
 
 dependencies {
@@ -44,22 +52,22 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:navigation"))
     implementation(project(":core:ui"))
-    implementation(project(":feature:auth"))
+    implementation(project(":feature:splash"))
     implementation(project(":feature:feed"))
     implementation(project(":feature:camera"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:post"))
-    implementation(project(":feature:messaging"))
+    implementation(project(":feature:discover"))
+    implementation(project(":feature:notification"))
     implementation(project(":domain:model"))
     implementation(project(":domain:usecase"))
     implementation(project(":data:model"))
     implementation(project(":data:source-local"))
     implementation(project(":data:repository"))
+    implementation(platform(libs.androidx.compose.bom))
 
-    // compose
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)

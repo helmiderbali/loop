@@ -29,9 +29,18 @@ android {
         jvmTarget = "11"
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
+    }
 }
 dependencies {
+    implementation(project(":domain:model"))
     implementation(project(":core:common"))
+    implementation(libs.androidx.material.icons.extended)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.runtime)
     implementation(libs.material3)

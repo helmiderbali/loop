@@ -1,8 +1,8 @@
 package com.hderbali.repository
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Comment
 import com.hderbali.model.Reply
-import com.hderbali.model.ResultOf
 import com.hderbali.source_local.db.dao.CommentDao
 import com.hderbali.source_local.db.entities.CommentEntity
 import com.hderbali.source_local.db.entities.CommentWithReplies
@@ -40,13 +40,11 @@ class CommentRepositoryImpl @Inject constructor(
         emit(ResultOf.Loading)
 
         try {
-            // In a real app, we would make an API call and then store the result
-            // For this prototype, we'll create a mock comment
             val commentId = "comment_${System.currentTimeMillis()}"
             val newComment = CommentEntity(
                 id = commentId,
                 postId = postId,
-                userId = "user10", // Current user
+                userId = "user10",
                 content = content,
                 timestamp = System.currentTimeMillis().toString(),
                 likeCount = 0,
@@ -65,7 +63,6 @@ class CommentRepositoryImpl @Inject constructor(
         emit(ResultOf.Loading)
 
         try {
-            // Find the comment
             val allComments = commentDao.observeCommentsByPostId("").first()
             val commentWithReplies = allComments.find { it.comment.id == commentId }
 
@@ -81,7 +78,6 @@ class CommentRepositoryImpl @Inject constructor(
                 commentDao.updateComment(updatedComment)
                 emit(ResultOf.Success(true))
             } else {
-                // Check if it's a reply
                 val reply = allComments.flatMap { it.replies }.find { it.id == commentId }
                 if (reply != null) {
                     val updatedReply = reply.copy(
@@ -103,12 +99,11 @@ class CommentRepositoryImpl @Inject constructor(
         emit(ResultOf.Loading)
 
         try {
-            // Mock reply creation
             val replyId = "reply_${System.currentTimeMillis()}"
             val newReply = ReplyEntity(
                 id = replyId,
                 commentId = commentId,
-                userId = "user10", // Current user
+                userId = "user10",
                 content = content,
                 timestamp = System.currentTimeMillis().toString(),
                 likeCount = 0,

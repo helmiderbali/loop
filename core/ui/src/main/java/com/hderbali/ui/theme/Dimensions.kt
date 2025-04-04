@@ -10,7 +10,6 @@ val AppShapes = Shapes(
     large = RoundedCornerShape(16.dp)
 )
 
-// Extended shape definitions for specific UI components
 object AppSpecificShapes {
     val CardShape = RoundedCornerShape(16.dp)
     val ButtonShape = RoundedCornerShape(24.dp)
@@ -23,7 +22,6 @@ object AppSpecificShapes {
     val ChipShape = RoundedCornerShape(16.dp)
 }
 
-// Dimensions for consistent spacing throughout the app
 object AppDimensions {
     // Screen margins
     val screenMargin = 16.dp
@@ -63,7 +61,6 @@ object AppDimensions {
     val maxContentWidth = 720.dp
 }
 
-// Elevation values
 object AppElevation {
     val level0 = 0.dp
     val level1 = 1.dp

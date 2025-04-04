@@ -1,8 +1,8 @@
 package com.hderbali.usecase.usecases.post.impl
 
-import com.hderbali.model.ResultOf
+import com.hderbali.common.model.ResultOf
 import com.hderbali.usecase.repository.PostRepository
-import com.hderbali.usecase.usecases.post.LikePostUseCase
+import com.hderbali.ui.usescases.post.LikePostUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

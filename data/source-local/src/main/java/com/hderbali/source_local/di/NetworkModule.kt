@@ -17,13 +17,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    private const val BASE_URL = "https://run.mocky.io/"
 
     @Provides
     @Singleton
     fun provideJson(): Json = Json {
+        prettyPrint = false
+        isLenient = true
         ignoreUnknownKeys = true
         coerceInputValues = true
-        isLenient = true
     }
 
     @Provides
@@ -46,7 +48,7 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient, json: Json): Retrofit {
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder()
-            .baseUrl("https://run.mocky.io/")
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()

@@ -1,13 +1,14 @@
 package com.hderbali.repository
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Notification
-import com.hderbali.model.ResultOf
 import com.hderbali.source_local.db.dao.NotificationDao
 import com.hderbali.source_local.db.entities.EntityMappers
 import com.hderbali.source_local.network.LoopApiService
 import com.hderbali.usecase.repository.NotificationRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -23,20 +24,23 @@ class NotificationRepositoryImpl @Inject constructor(
     override fun getNotifications(): Flow<ResultOf<List<Notification>>> = flow {
         emit(ResultOf.Loading)
 
-        emitAll(notificationDao.observeAllNotifications()
-            .map { entities ->
-                if (entities.isEmpty()) {
-                    ResultOf.Loading
-                } else {
-                    ResultOf.Success(mappers.run { entities.toNotificationDomain() })
-                }
-            }
-        )
+        val localData = notificationDao.observeAllNotifications().first()
+        if (localData.isNotEmpty()) {
+            emit(ResultOf.Success(mappers.run { localData.toNotificationDomain() }))
+        }
 
         try {
             refreshNotifications()
+
+            emitAll(notificationDao.observeAllNotifications()
+                .map { entities ->
+                    ResultOf.Success(mappers.run { entities.toNotificationDomain() })
+                }
+            )
         } catch (e: Exception) {
-            emit(ResultOf.Error(e))
+            if (localData.isEmpty()) {
+                emit(ResultOf.Error(e))
+            }
         }
     }
 

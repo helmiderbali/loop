@@ -9,15 +9,15 @@ import retrofit2.http.GET
 
 @OptIn(InternalSerializationApi::class)
 interface LoopApiService {
-    @GET("https://run.mocky.io/v3/a41204df-443c-4679-bd9d-6a41958c4934")
+    @GET("/v3/85f2fe54-a6c6-4f19-a12e-f46b0a27cc3e")
     suspend fun getUsers(): List<UserDto>
 
-    @GET("https://run.mocky.io/v3/bf3a4980-45b4-4220-8a53-b00846a11658")
+    @GET("v3/799add30-156d-4446-9025-3d7db3aa24d5")
     suspend fun getPosts(): List<PostDto>
 
-    @GET("https://run.mocky.io/v3/f2aa982d-32ca-42d2-a5ac-32a3e355472b")
+    @GET("v3/2ff9a311-5414-4206-8243-719a1b27bb2e")
     suspend fun getComments(): List<CommentDto>
 
-    @GET("https://run.mocky.io/v3/cf1179ab-2172-49de-a26a-680c56603750")
+    @GET("v3/37006496-6072-4bfe-981c-b8f4225e6ebe")
     suspend fun getNotifications(): List<NotificationDto>
 }

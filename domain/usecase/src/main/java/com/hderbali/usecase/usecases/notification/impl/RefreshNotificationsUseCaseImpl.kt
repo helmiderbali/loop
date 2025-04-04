@@ -1,7 +1,7 @@
 package com.hderbali.usecase.usecases.notification.impl
 
+import com.hderbali.ui.usescases.notification.RefreshNotificationsUseCase
 import com.hderbali.usecase.repository.NotificationRepository
-import com.hderbali.usecase.usecases.notification.RefreshNotificationsUseCase
 import javax.inject.Inject
 
 class RefreshNotificationsUseCaseImpl @Inject constructor(

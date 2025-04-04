@@ -1,7 +1,7 @@
 package com.hderbali.usecase.usecases.user.impl
 
+import com.hderbali.ui.usescases.profile.RefreshUsersUseCase
 import com.hderbali.usecase.repository.UserRepository
-import com.hderbali.usecase.usecases.user.RefreshUsersUseCase
 import javax.inject.Inject
 
 class RefreshUsersUseCaseImpl @Inject constructor(

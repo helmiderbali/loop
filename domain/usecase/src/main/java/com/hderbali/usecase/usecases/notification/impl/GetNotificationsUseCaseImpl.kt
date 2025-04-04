@@ -1,9 +1,9 @@
 package com.hderbali.usecase.usecases.notification.impl
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Notification
-import com.hderbali.model.ResultOf
+import com.hderbali.ui.usescases.notification.GetNotificationsUseCase
 import com.hderbali.usecase.repository.NotificationRepository
-import com.hderbali.usecase.usecases.notification.GetNotificationsUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

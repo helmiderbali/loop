@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -30,13 +32,41 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
+    }
 }
 
 dependencies {
-    implementation(project(":data:repository"))
-    implementation(project(":domain:usecase"))
+    implementation(project(":domain:model"))
     implementation(project(":core:ui"))
-    implementation(project(":core:navigation"))
+    implementation(project(":core:common"))
+
+    implementation(platform(libs.androidx.compose.bom))
+
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.foundation)
+    implementation(libs.ui)
+    implementation(libs.material3)
+
+    implementation(libs.accompanist.swiperefresh)
+
+    implementation(libs.coil.compose)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
+
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+    implementation (libs.accompanist.permissions)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,7 +1,7 @@
 package com.hderbali.usecase.repository
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Comment
-import com.hderbali.model.ResultOf
 import com.hderbali.model.Reply
 import kotlinx.coroutines.flow.Flow
 

@@ -77,7 +77,6 @@ val BookmarkColor = Color(0xFFFFA64D)      // Bright Orange for bookmarks
 val VerifiedBadge = Color(0xFF00CCBB)      // Teal for verified badge
 val LinkColor = Color(0xFF2D7FF9)          // Blue for links
 
-// Custom color schemes
 val LightColorScheme = lightColorScheme(
     primary = LightPrimary,
     onPrimary = LightOnPrimary,
@@ -132,7 +131,6 @@ val DarkColorScheme = darkColorScheme(
     outlineVariant = DarkOutlineVariant
 )
 
-// Extended colors accessible throughout the app
 object AppColors {
     val Like = LikeColor
     val Comment = CommentColor

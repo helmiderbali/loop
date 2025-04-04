@@ -28,11 +28,26 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
+    }
 }
 
 dependencies {
-    implementation(project(":feature:auth"))
-
+    implementation(project(":feature:splash"))
+    implementation(project(":feature:feed"))
+    implementation(project(":feature:post"))
+    implementation(project(":feature:profile"))
+    implementation(project(":feature:discover"))
+    implementation(project(":feature:notification"))
+    implementation(project(":feature:camera"))
+    implementation(project(":core:common"))
+    implementation(project(":core:ui"))
     implementation(libs.androidx.navigation.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.ui)

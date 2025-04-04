@@ -39,6 +39,9 @@ class ExtendedThemeAccessor(private val extras: AppThemeExtras) {
     val isLightTheme: Boolean get() = extras.isLightTheme
 }
 
+val ExtendedTheme: ExtendedThemeAccessor
+    @Composable
+    get() = ExtendedThemeAccessor(LocalAppThemeExtras.current)
 
 @Composable
 fun AppTheme(

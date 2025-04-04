@@ -1,43 +1,45 @@
 package com.hderbali.usecase.di
 
-import com.hderbali.usecase.usecases.comment.AddCommentUseCase
-import com.hderbali.usecase.usecases.comment.AddReplyUseCase
-import com.hderbali.usecase.usecases.comment.GetCommentsByPostIdUseCase
-import com.hderbali.usecase.usecases.comment.LikeCommentUseCase
-import com.hderbali.usecase.usecases.comment.RefreshCommentsUseCase
+import com.hderbali.ui.usescases.notification.GetNotificationsUseCase
+import com.hderbali.ui.usescases.notification.GetUnreadNotificationsCountUseCase
+import com.hderbali.ui.usescases.notification.MarkAllNotificationsAsReadUseCase
+import com.hderbali.ui.usescases.notification.MarkNotificationAsReadUseCase
+import com.hderbali.ui.usescases.notification.RefreshNotificationsUseCase
+import com.hderbali.ui.usescases.comment.AddCommentUseCase
+import com.hderbali.ui.usescases.comment.AddReplyUseCase
+import com.hderbali.ui.usescases.comment.GetCommentsByPostIdUseCase
+import com.hderbali.ui.usescases.comment.LikeCommentUseCase
+import com.hderbali.ui.usescases.comment.RefreshCommentsUseCase
 import com.hderbali.usecase.usecases.comment.impl.AddCommentUseCaseImpl
 import com.hderbali.usecase.usecases.comment.impl.AddReplyUseCaseImpl
 import com.hderbali.usecase.usecases.comment.impl.GetCommentsByPostIdUseCaseImpl
 import com.hderbali.usecase.usecases.comment.impl.LikeCommentUseCaseImpl
 import com.hderbali.usecase.usecases.comment.impl.RefreshCommentsUseCaseImpl
-import com.hderbali.usecase.usecases.notification.GetNotificationsUseCase
-import com.hderbali.usecase.usecases.notification.GetUnreadNotificationsCountUseCase
-import com.hderbali.usecase.usecases.notification.MarkAllNotificationsAsReadUseCase
-import com.hderbali.usecase.usecases.notification.MarkNotificationAsReadUseCase
-import com.hderbali.usecase.usecases.notification.RefreshNotificationsUseCase
 import com.hderbali.usecase.usecases.notification.impl.GetNotificationsUseCaseImpl
 import com.hderbali.usecase.usecases.notification.impl.GetUnreadNotificationsCountUseCaseImpl
 import com.hderbali.usecase.usecases.notification.impl.MarkAllNotificationsAsReadUseCaseImpl
 import com.hderbali.usecase.usecases.notification.impl.MarkNotificationAsReadUseCaseImpl
 import com.hderbali.usecase.usecases.notification.impl.RefreshNotificationsUseCaseImpl
-import com.hderbali.usecase.usecases.post.BookmarkPostUseCase
-import com.hderbali.usecase.usecases.post.GetPostByIdUseCase
-import com.hderbali.usecase.usecases.post.GetPostsByUserIdUseCase
-import com.hderbali.usecase.usecases.post.GetPostsUseCase
-import com.hderbali.usecase.usecases.post.GetTrendingPostsUseCase
-import com.hderbali.usecase.usecases.post.LikePostUseCase
-import com.hderbali.usecase.usecases.post.RefreshPostsUseCase
+import com.hderbali.ui.usescases.post.BookmarkPostUseCase
+import com.hderbali.ui.usescases.post.CreatePostUseCase
+import com.hderbali.ui.usescases.post.GetPostByIdUseCase
+import com.hderbali.ui.usescases.post.GetPostsByUserIdUseCase
+import com.hderbali.ui.usescases.post.GetPostsUseCase
+import com.hderbali.ui.usescases.post.GetTrendingPostsUseCase
+import com.hderbali.ui.usescases.post.LikePostUseCase
+import com.hderbali.ui.usescases.post.RefreshPostsUseCase
+import com.hderbali.ui.usescases.profile.GetCurrentUserUseCase
+import com.hderbali.ui.usescases.profile.GetUserByIdUseCase
+import com.hderbali.ui.usescases.profile.GetUsersUseCase
+import com.hderbali.ui.usescases.profile.RefreshUsersUseCase
 import com.hderbali.usecase.usecases.post.impl.BookmarkPostUseCaseImpl
+import com.hderbali.usecase.usecases.post.impl.CreatePostUseCaseImpl
 import com.hderbali.usecase.usecases.post.impl.GetPostByIdUseCaseImpl
 import com.hderbali.usecase.usecases.post.impl.GetPostsByUserIdUseCaseImpl
 import com.hderbali.usecase.usecases.post.impl.GetPostsUseCaseImpl
 import com.hderbali.usecase.usecases.post.impl.GetTrendingPostsUseCaseImpl
 import com.hderbali.usecase.usecases.post.impl.LikePostUseCaseImpl
 import com.hderbali.usecase.usecases.post.impl.RefreshPostsUseCaseImpl
-import com.hderbali.usecase.usecases.user.GetCurrentUserUseCase
-import com.hderbali.usecase.usecases.user.GetUserByIdUseCase
-import com.hderbali.usecase.usecases.user.GetUsersUseCase
-import com.hderbali.usecase.usecases.user.RefreshUsersUseCase
 import com.hderbali.usecase.usecases.user.impl.GetCurrentUserUseCaseImpl
 import com.hderbali.usecase.usecases.user.impl.GetUserByIdUseCaseImpl
 import com.hderbali.usecase.usecases.user.impl.GetUsersUseCaseImpl
@@ -51,7 +53,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class UseCaseModule {
-    // User Use Cases
     @Binds
     @Singleton
     abstract fun bindGetUsersUseCase(impl: GetUsersUseCaseImpl): GetUsersUseCase
@@ -68,7 +69,6 @@ abstract class UseCaseModule {
     @Singleton
     abstract fun bindRefreshUsersUseCase(impl: RefreshUsersUseCaseImpl): RefreshUsersUseCase
 
-    // Post Use Cases
     @Binds
     @Singleton
     abstract fun bindGetPostsUseCase(impl: GetPostsUseCaseImpl): GetPostsUseCase
@@ -118,7 +118,6 @@ abstract class UseCaseModule {
     @Singleton
     abstract fun bindRefreshCommentsUseCase(impl: RefreshCommentsUseCaseImpl): RefreshCommentsUseCase
 
-    // Notification Use Cases
     @Binds
     @Singleton
     abstract fun bindGetNotificationsUseCase(impl: GetNotificationsUseCaseImpl): GetNotificationsUseCase
@@ -138,4 +137,8 @@ abstract class UseCaseModule {
     @Binds
     @Singleton
     abstract fun bindRefreshNotificationsUseCase(impl: RefreshNotificationsUseCaseImpl): RefreshNotificationsUseCase
+
+    @Binds
+    @Singleton
+    abstract fun bindCreatePostUseCase(impl: CreatePostUseCaseImpl): CreatePostUseCase
 }

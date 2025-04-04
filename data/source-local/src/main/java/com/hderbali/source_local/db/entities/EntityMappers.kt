@@ -15,8 +15,6 @@ import javax.inject.Inject
 
 @OptIn(InternalSerializationApi::class)
 class EntityMappers @Inject constructor(private val json: Json) {
-
-    // User Mappers
     fun UserDto.toEntity(): UserEntity = UserEntity(
         id = id,
         username = username,
@@ -43,7 +41,6 @@ class EntityMappers @Inject constructor(private val json: Json) {
         joinDate = joinDate
     )
 
-    // Post Mappers
     fun PostDto.toEntity(): PostEntity = PostEntity(
         id = id,
         userId = userId,
@@ -82,7 +79,6 @@ class EntityMappers @Inject constructor(private val json: Json) {
         link = link
     )
 
-    // Comment Mappers
     fun CommentDto.toEntities(): Pair<CommentEntity, List<ReplyEntity>> {
         val commentEntity = CommentEntity(
             id = id,
@@ -130,7 +126,6 @@ class EntityMappers @Inject constructor(private val json: Json) {
         }
     )
 
-    // Notification Mappers
     fun NotificationDto.toEntity(): NotificationEntity = NotificationEntity(
         id = id,
         userId = userId,
@@ -155,19 +150,37 @@ class EntityMappers @Inject constructor(private val json: Json) {
         isRead = isRead
     )
 
-    // User
+    fun Post.toPostEntity(): PostEntity {
+        return PostEntity(
+            id = id,
+            userId = userId,
+            type = type,
+            content = content,
+            media = media,
+            timestamp = timestamp,
+            likeCount = likeCount,
+            commentCount = commentCount,
+            viewCount = viewCount,
+            location = location,
+            tags = tags,
+            isTrending = isTrending,
+            isBookmarked = isBookmarked,
+            isLiked = isLiked,
+            spotifyLink = spotifyLink,
+            link = link,
+            lastUpdated = System.currentTimeMillis()
+        )
+    }
+
     fun List<UserDto>.toUserEntities() = map { it.toEntity() }
     fun List<UserEntity>.toUserDomain() = map { it.toDomain() }
 
-    // Post
     fun List<PostDto>.toPostEntities() = map { it.toEntity() }
     fun List<PostEntity>.toPostDomain() = map { it.toDomain() }
 
-    // Notification
     fun List<NotificationDto>.toNotificationEntities() = map { it.toEntity() }
     fun List<NotificationEntity>.toNotificationDomain() = map { it.toDomain() }
 
-    // Comment and Replies
     fun List<CommentDto>.toCommentAndReplyEntities(): Pair<List<CommentEntity>, List<ReplyEntity>> {
         val result = map { it.toEntities() }
         return Pair(

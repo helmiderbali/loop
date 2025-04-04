@@ -1,6 +1,6 @@
 package com.hderbali.repository
 
-import com.hderbali.model.ResultOf
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.User
 import com.hderbali.source_local.db.dao.UserDao
 import com.hderbali.source_local.db.entities.EntityMappers
@@ -24,7 +24,6 @@ class UserRepositoryImpl @Inject constructor(
     override fun getUsers(): Flow<ResultOf<List<User>>> = flow {
         emit(ResultOf.Loading)
 
-        // First emit data from local database
         emitAll(userDao.observeAllUsers()
             .map { entities ->
                 if (entities.isEmpty()) {
@@ -35,7 +34,6 @@ class UserRepositoryImpl @Inject constructor(
             }
         )
 
-        // Then try to fetch fresh data
         try {
             refreshUsers()
         } catch (e: Exception) {

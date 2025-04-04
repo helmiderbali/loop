@@ -1,10 +1,10 @@
 package com.hderbali.usecase.usecases.comment.impl
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Reply
 import com.hderbali.model.ReplyParams
-import com.hderbali.model.ResultOf
+import com.hderbali.ui.usescases.comment.AddReplyUseCase
 import com.hderbali.usecase.repository.CommentRepository
-import com.hderbali.usecase.usecases.comment.AddReplyUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

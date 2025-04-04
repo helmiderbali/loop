@@ -1,7 +1,7 @@
 package com.hderbali.usecase.repository
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Post
-import com.hderbali.model.ResultOf
 import kotlinx.coroutines.flow.Flow
 
 interface PostRepository {
@@ -12,4 +12,5 @@ interface PostRepository {
     suspend fun refreshPosts()
     suspend fun likePost(postId: String): Flow<ResultOf<Boolean>>
     suspend fun bookmarkPost(postId: String): Flow<ResultOf<Boolean>>
+    suspend fun createPost(post: Post): Post
 }

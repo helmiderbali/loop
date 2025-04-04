@@ -23,12 +23,13 @@
             <option value="$PROJECT_DIR$/domain/model" />
             <option value="$PROJECT_DIR$/domain/usecase" />
             <option value="$PROJECT_DIR$/feature" />
-            <option value="$PROJECT_DIR$/feature/auth" />
             <option value="$PROJECT_DIR$/feature/camera" />
+            <option value="$PROJECT_DIR$/feature/discover" />
             <option value="$PROJECT_DIR$/feature/feed" />
-            <option value="$PROJECT_DIR$/feature/messaging" />
+            <option value="$PROJECT_DIR$/feature/notification" />
             <option value="$PROJECT_DIR$/feature/post" />
             <option value="$PROJECT_DIR$/feature/profile" />
+            <option value="$PROJECT_DIR$/feature/splash" />
           </set>
         </option>
       </GradleProjectSettings>

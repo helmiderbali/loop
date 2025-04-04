@@ -39,6 +39,7 @@ android {
 dependencies {
     implementation(project(":domain:model"))
     implementation(project(":domain:usecase"))
+    implementation(project(":core:common"))
     implementation(project(":data:source-local"))
 
     implementation(libs.kotlinx.coroutines.core)

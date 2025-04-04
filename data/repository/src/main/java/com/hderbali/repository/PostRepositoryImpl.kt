@@ -1,17 +1,19 @@
 package com.hderbali.repository
 
+import com.hderbali.common.model.ResultOf
 import com.hderbali.model.Post
-import com.hderbali.model.ResultOf
 import com.hderbali.source_local.db.dao.PostDao
 import com.hderbali.source_local.db.entities.EntityMappers
 import com.hderbali.source_local.network.LoopApiService
 import com.hderbali.usecase.repository.PostRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import java.io.IOException
+import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -123,4 +125,24 @@ class PostRepositoryImpl @Inject constructor(
             emit(ResultOf.Error(e))
         }
     }
+
+    override suspend fun createPost(post: Post): Post {
+        try {
+            val finalPost = if (post.id.isBlank()) {
+                post.copy(id = UUID.randomUUID().toString())
+            } else {
+                post
+            }
+
+            val postEntity = mappers.run { finalPost.toPostEntity() }
+            postDao.insertPosts(listOf(postEntity))
+
+            delay(500)
+
+            return finalPost
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
 }
