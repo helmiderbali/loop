@@ -1,15 +1,38 @@
+# Gradle files
+.gradle/
+build/
+*/build/
+
+# IDE files
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# Local configuration
 local.properties
+
+# Native build artifacts
+.cxx/
+externalNativeBuild/
+
+# macOS
+.DS_Store
+
+# Captures from screen recording
+captures/
+
+# Crashlytics/Firebase (optional)
+crashlytics-build.properties
+
+# Android Studio Navigation Editor
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# Other .idea configs (optional if you want to keep VCS/code styles shared)
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+
+# Generated files by Android
+output.json
